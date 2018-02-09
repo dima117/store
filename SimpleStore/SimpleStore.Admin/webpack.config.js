@@ -6,6 +6,7 @@ module.exports = {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'wwwroot', 'dist')
     },
+    
     module: {
         rules: [
           {
@@ -14,9 +15,14 @@ module.exports = {
             use: {
               loader: 'babel-loader',
               options: {
-                presets: ['env', 'react']
+                presets: ['env', 'react'],
+                plugins: [["import", { libraryName: "antd", libraryDirectory: "es", style: "css" }]]
               }
             }
+          },
+          {
+            test: /\.css$/,
+            use: [ 'style-loader', 'css-loader' ]
           }
         ]
       }
