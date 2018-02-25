@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
+import {Test} from './Main';
 const { Sider, Content } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -30,7 +31,7 @@ export class MainLayout extends Component {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Content>Content</Content>
+        <Content><Test/></Content>
       </Layout>
     );
   }
