@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Layout, Menu} from 'antd';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 const {Sider, Content} = Layout;
-const {SubMenu, ItemGroup} = Menu;
+const {SubMenu, Item} = Menu;
 
 require('./MainLayout.css');
 
@@ -20,54 +20,57 @@ import {Settings} from './pages/Settings';
 
 
 export class MainLayout extends Component {
+
     render() {
         return <Router hashType='noslash'>
             <Layout className='MainLayout'>
                 <Sider breakpoint='xs' collapsedWidth='0'>
+                    <Menu mode='inline' theme='dark'>
+                        <Item>
+                            <Link to=''>Главная</Link>
+                        </Item>
+                        <SubMenu title='Содержимое'>
+                            <Item>
+                                <Link to='nav'>Навигация</Link>
+                            </Item>
+                            <Item>
+                                <Link to='pages'>Страницы</Link>
+                            </Item>
+                            <Item>
+                                <Link to='news'>Новости</Link>
+                            </Item>
+                        </SubMenu>
+                        <SubMenu title='Каталог'>
+                            <Item>
+                                <Link to='categories'>Разделы</Link>
+                            </Item>
+                            <Item>
+                                <Link to='products'>Товары</Link>
+                            </Item>
+                            <Item>
+                                <Link to='import'>Импорт</Link>
+                            </Item>
+                        </SubMenu>
+                        <Item>
+                            <Link to='orders'>Заказы</Link>
+                        </Item>
+                        <Item>
+                            <Link to='settings'>Настройки</Link>
+                        </Item>
+                    </Menu>
                 </Sider>
                 <Content>
-                    <Route exact path='/' component={Home} />
-                    <Route path='/nav' component={Navigation} />
-                    <Route path='/pages' component={Pages} />
-                    <Route path='/news' component={News} />
-                    <Route path='/categories' component={Categories} />
-                    <Route path='/products' component={Products} />
-                    <Route path='/import' component={Import} />
-                    <Route path='/orders' component={Orders} />
-                    <Route path='/settings' component={Settings} />
+                    <Route exact path='/' component={Home}/>
+                    <Route path='/nav' component={Navigation}/>
+                    <Route path='/pages' component={Pages}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/categories' component={Categories}/>
+                    <Route path='/products' component={Products}/>
+                    <Route path='/import' component={Import}/>
+                    <Route path='/orders' component={Orders}/>
+                    <Route path='/settings' component={Settings}/>
                 </Content>
             </Layout>
         </Router>
-
-        // return (
-        //     <Router>
-        //         <Layout className='MainLayout'>
-        //             <Sider breakpoint='xs' collapsedWidth='0'>
-        //                 <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
-        //                     <SubMenu key='sub1' title='Содержимое'>
-        //                         <Menu.Item key='nav'>Навигация</Menu.Item>
-        //                         <Menu.Item key='pages'>Страницы</Menu.Item>
-        //                         <Menu.Item key='news'>Новости</Menu.Item>
-        //                     </SubMenu>
-        //                     <SubMenu key='sub2' title='Каталог'>
-        //                         <Menu.Item key='sections'>Разделы</Menu.Item>
-        //                         <Menu.Item key='products'>Товары</Menu.Item>
-        //                         <Menu.Item key='import'>Импорт</Menu.Item>
-        //                     </SubMenu>
-        //                     <Menu.Item key='orders'>
-        //                         <span className='nav-text'>Заказы</span>
-        //                     </Menu.Item>
-        //                     <Menu.Item key='settings'>
-        //                         <span className='nav-text'>Настройки</span>
-        //                     </Menu.Item>
-        //                 </Menu>
-        //             </Sider>
-        //             <Content>
-        //
-        //
-        //             </Content>
-        //         </Layout>
-        //     </Router>
-        // );
     }
 }
